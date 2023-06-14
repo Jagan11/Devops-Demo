@@ -1,5 +1,19 @@
-resource "null_resource" "install_web_server" {
+# main.tf
+
+provider "docker" {
+  host = "unix:///var/run/docker.sock"
+}
+
+resource "docker_container" "web_server" {
+  name  = "my_web_server"
+  image = "httpd:latest"
+
+  ports {
+    internal = 80
+    external = 8080
+  }
+
   provisioner "local-exec" {
-    command = "apt-get update && apt-get install -y apache2"
+    command = "echo Web server installed and running on http://localhost:8080"
   }
 }
