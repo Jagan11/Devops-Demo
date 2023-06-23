@@ -1,32 +1,17 @@
 pipeline {
     agent any
-    
+
     stages {
-        stage('Build') {
+        stage('Git Checkout') {
             steps {
-                sh 'echo "Building..."'
-                // Add build steps here
+                git branch: 'master', url: 'https://github.com/your/repository.git'
             }
         }
-        
-        stage('Test') {
+
+        stage('Deploy to Localhost') {
             steps {
-                sh 'echo "Testing..."'
-                // Add test steps here
+                sh 'cp index.html /path/to/Library/WebServer/Documents/' // Replace /path/to/Library/WebServer/Documents/ with the actual path to your local server's document root
             }
-        }
-        
-        stage('Deploy') {
-            steps {
-                sh 'echo "Deploying..."'
-                // Add deployment steps here
-            }
-        }
-    }
-    
-    post {
-        always {
-            sh 'echo "Pipeline finished"'
         }
     }
 }
