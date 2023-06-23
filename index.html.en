@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Vest-VISA FORM</title>
+    <title>VISA FORM</title>
 </head>
 <body>
-    <h1>VISA FORM</h1>
+    <h1>Test-VISA FORM</h1>
 
     <form>
         <label for="name">Name:</label>
