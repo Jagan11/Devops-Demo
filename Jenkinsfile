@@ -12,10 +12,8 @@ pipeline {
 
     stage('Configure Permissions') {
       steps {
-        sh '''
-          sudo chown -R jagan:$(id -g jagan) /Library/WebServer/Documents/Test-webserver/
-          sudo chmod -R 755 /Library/WebServer/Documents/Test-webserver/
-        '''
+        sh 'echo Application@123$ | sudo -S chown -R jd:jd /Library/WebServer/Documents/Test-webserver/'
+        sh 'echo Application@123$ | sudo -S chmod -R 777 /Library/WebServer/Documents/Test-webserver/'
       }
     }
 
