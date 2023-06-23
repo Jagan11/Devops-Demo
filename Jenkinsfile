@@ -21,7 +21,7 @@ pipeline {
     stage('Deploy to Localhost') {
       steps {
         script {
-          sh "echo 'Application@123\$' | sudo -S cp /Users/jd/.jenkins/workspace/Freestyle_master/index.html.en /Library/WebServer/Documents/Test-webserver/"
+          sh "echo 'Application@123$' | sudo -S cp /Users/jd/.jenkins/workspace/Freestyle_master/index.html.en /Library/WebServer/Documents/Test-webserver/"
         }
       }
     }
