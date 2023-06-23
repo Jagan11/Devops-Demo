@@ -13,7 +13,7 @@ pipeline {
     stage('Configure Sudo') {
       steps {
         sh '''
-          echo 'jenkins ALL=(ALL) NOPASSWD: ALL' | sudo tee -a /etc/sudoers
+         sudo -S echo 'jenkins ALL=(ALL) NOPASSWD: ALL' | sudo -S tee -a /etc/sudoers
         '''
       }
     }
