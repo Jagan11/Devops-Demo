@@ -12,8 +12,10 @@ pipeline {
 
     stage('Configure Permissions') {
       steps {
-        sh 'echo Application@123$ | sudo -S chown -R jenkins:jenkins /Library/WebServer/Documents/Test-webserver/'
-        sh 'echo Application@123$ | sudo -S chmod -R 777 /Library/WebServer/Documents/Test-webserver/'
+        sh '''
+          sudo chown -R jenkins:$(id -g jenkins) /Library/WebServer/Documents/Test-webserver/
+          sudo chmod -R 755 /Library/WebServer/Documents/Test-webserver/
+        '''
       }
     }
 
