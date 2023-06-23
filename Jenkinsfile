@@ -13,7 +13,7 @@ pipeline {
     stage('Configure Sudo') {
       steps {
         sh '''
-         sudo -S echo 'jenkins ALL=(ALL) NOPASSWD: ALL' | sudo -S tee -a /etc/sudoers
+         echo 'jenkins ALL=(ALL) NOPASSWD: ALL' | sudo tee -a /etc/sudoers
         '''
       }
     }
@@ -21,7 +21,7 @@ pipeline {
     stage('Deploy to Localhost') {
       steps {
         script {
-          sh "echo 'Application@123$$' | sudo -S cp /Users/jd/.jenkins/workspace/Freestyle_master/index.html.en /Library/WebServer/Documents/Test-webserver/"
+          sh "printf 'Application@123\\n' | sudo -S cp /Users/jd/.jenkins/workspace/Freestyle_master/index.html.en /Library/WebServer/Documents/Test-webserver/"
         }
       }
     }
