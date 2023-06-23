@@ -10,13 +10,18 @@ pipeline {
       }
     }
 
+    stage('Configure Sudo') {
+      steps {
+        sh '''
+          echo 'jenkins ALL=(ALL) NOPASSWD: ALL' | sudo tee -a /etc/sudoers
+        '''
+      }
+    }
+
     stage('Deploy to Localhost') {
       steps {
         script {
-          sh '''
-            echo "jenkins ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
-            sudo cp /Users/jd/.jenkins/workspace/Freestyle_master/index.html.en /Library/WebServer/Documents/Test-webserver/
-          '''
+          sh 'sudo cp /Users/jd/.jenkins/workspace/Freestyle_master/index.html.en  /Library/WebServer/Documents/Test-webserver/'
         }
       }
     }
