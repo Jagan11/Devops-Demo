@@ -1,18 +1,22 @@
 pipeline {
-    agent any
+  agent any
 
-    stages {
-        stage('Git Checkout') {
-            steps {
-                git branch: 'master', url: 'https://github.com/your/repository.git'
-            }
+  stages {
+    stage('Git Checkout') {
+      steps {
+        script {
+          git branch: 'master', url: 'https://github.com/Jagan11/Devops-Demo.git'
         }
-
-        stage('Deploy to Localhost') {
-            steps {
-                sh 'cp index.html /path/to/Library/WebServer/Documents/' // Replace /path/to/Library/WebServer/Documents/ with the actual path to your local server's document root
-            }
-        }
+      }
     }
+
+    stage('Deploy to Localhost') {
+      steps {
+        script {
+          sh 'cp index.html  /Library/WebServer/Documents/Test-webserver/'
+        }
+      }
+    }
+  }
 }
 
