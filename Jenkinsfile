@@ -12,7 +12,7 @@ pipeline {
 
     stage('Configure Permissions') {
       steps {
-        sh 'echo Application@123$ | sudo -S chown -R jd:jd /Library/WebServer/Documents/Test-webserver/'
+        sh 'echo Application@123$ | sudo -S chown -R jd:staff /Library/WebServer/Documents/Test-webserver/'
         sh 'echo Application@123$ | sudo -S chmod -R 777 /Library/WebServer/Documents/Test-webserver/'
       }
     }
