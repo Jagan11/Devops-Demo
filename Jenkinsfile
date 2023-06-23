@@ -10,19 +10,16 @@ pipeline {
       }
     }
 
-    stage('Configure Sudo') {
+    stage('Configure Permissions') {
       steps {
-        sh '''
-         echo 'jenkins ALL=(ALL) NOPASSWD: ALL' | sudo tee -a /etc/sudoers
-        '''
+        sh 'sudo chown -R jenkins:jenkins /Library/WebServer/Documents/Test-webserver/'
+        sh 'sudo chmod -R 777 /Library/WebServer/Documents/Test-webserver/'
       }
     }
 
     stage('Deploy to Localhost') {
       steps {
-        script {
-          sh "printf 'Application@123\\n' | sudo -S cp /Users/jd/.jenkins/workspace/Freestyle_master/index.html.en /Library/WebServer/Documents/Test-webserver/"
-        }
+        sh "cp /Users/jd/.jenkins/workspace/Freestyle_master/index.html.en /Library/WebServer/Documents/Test-webserver/"
       }
     }
   }
