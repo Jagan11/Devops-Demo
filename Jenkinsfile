@@ -13,7 +13,7 @@ pipeline {
     stage('Deploy to Localhost') {
       steps {
         script {
-          sh 'cp  /Users/jd/.jenkins/workspace/Freestyle_master/index.html.en  /Library/WebServer/Documents/Test-webserver/'
+          sh 'sudo cp /Users/jd/.jenkins/workspace/Freestyle_master/index.html.en  /Library/WebServer/Documents/Test-webserver/'
         }
       }
     }
