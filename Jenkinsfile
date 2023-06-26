@@ -26,10 +26,14 @@ pipeline {
     stage('Install Docker') {
       steps {
         script {
-          sh '''
-            curl -fsSL https://get.docker.com -o get-docker.sh
-            echo 'Application@123$' | sudo -S sh get-docker.sh
-          '''
+          if (isUnix()) {
+            sh '''
+              curl -fsSL https://get.docker.com -o get-docker.sh
+              echo 'Application@123$' | sudo -S sh get-docker.sh
+            '''
+          } else {
+            echo "Docker Desktop is required for macOS. Please download and install Docker Desktop from the Docker website."
+          }
         }
       }
     }
