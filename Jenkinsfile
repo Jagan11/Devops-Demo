@@ -28,27 +28,7 @@ pipeline {
         script {
           sh '''
             curl -fsSL https://get.docker.com -o get-docker.sh
-            sudo sh get-docker.sh
-          '''
-        }
-      }
-    }
-
-    stage('Build Docker Image') {
-      steps {
-        script {
-          sh '''
-            docker build -t my-web-server-image /path/to/your/dockerfile
-          '''
-        }
-      }
-    }
-
-    stage('Run Docker Container') {
-      steps {
-        script {
-          sh '''
-            docker run -d -p 80:80 --name my-web-server-container my-web-server-image
+            echo 'Application@123$' | sudo -S sh get-docker.sh
           '''
         }
       }
