@@ -23,23 +23,25 @@ pipeline {
       }
     }
 
-   stage('Install Docker') {
-     steps {
-       script {
-      if (isUnix()) {
-        sh '''
-          curl -fsSL https://get.docker.com -o get-docker.sh
-          echo 'Application@123$' | sudo -S sh get-docker.sh
-        '''
-      } else if (isMac()) {
-        sh '''
-          curl -fsSL https://download.docker.com/mac/stable/Docker.dmg -o Docker.dmg
-          sudo hdiutil attach Docker.dmg
-          sudo /Volumes/Docker/Docker.app/Contents/MacOS/install
-          sudo hdiutil detach /Volumes/Docker
-        '''
-      } else {
-        echo "Unsupported operating system. Please install Docker manually."
+    stage('Install Docker') {
+      steps {
+        script {
+          if (isUnix()) {
+            sh '''
+              curl -fsSL https://get.docker.com -o get-docker.sh
+              echo 'Application@123$' | sudo -S sh get-docker.sh
+            '''
+          } else if (isMac()) {
+            sh '''
+              curl -fsSL https://download.docker.com/mac/stable/Docker.dmg -o Docker.dmg
+              sudo hdiutil attach Docker.dmg
+              sudo /Volumes/Docker/Docker.app/Contents/MacOS/install
+              sudo hdiutil detach /Volumes/Docker
+            '''
+          } else {
+            echo "Unsupported operating system. Please install Docker manually."
+          }
+        }
       }
     }
   }
