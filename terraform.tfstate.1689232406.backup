@@ -1,0 +1,27 @@
+{
+  "version": 4,
+  "terraform_version": "1.5.0",
+  "serial": 11,
+  "lineage": "eaae9b28-0b30-45aa-0556-02de1c43ede2",
+  "outputs": {},
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "null_resource",
+      "name": "install_web_server",
+      "provider": "provider[\"registry.terraform.io/hashicorp/null\"]",
+      "instances": [
+        {
+          "status": "tainted",
+          "schema_version": 0,
+          "attributes": {
+            "id": "4694258801193972307",
+            "triggers": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}
